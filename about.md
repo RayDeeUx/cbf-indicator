@@ -11,6 +11,4 @@ While the CBF mod *does* leave a watermark when someone beats a level using CBF,
 The main advantage of this mod is that not only does it make it more clear on the endscreen (like how can you miss *that*), but it also has a live CBF indicator while playing the level.
 
 ## License
-This mod is licensed under the **Mozilla Public License 2.0**. More information about it can be found [here](https://choosealicense.com/licenses/mpl-2.0/).
-
-The original CBF mod by [syzzi](https://github.com/theyareonit) is licenced under the **MIT Licence**. More information about it can be found [here](https://choosealicense.com/licenses/mit/):
+**This mod** and the **Click Between Frames** mod by [syzzi](https://github.com/theyareonit) are licensed under the **MIT License**. More information about it can be found [here](https://choosealicense.com/licenses/mit/):
