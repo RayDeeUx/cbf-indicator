@@ -47,7 +47,7 @@ class $modify(CBFIndEndLevelLayer, EndLevelLayer) {
 		auto logo = CCSprite::create("cbf.png"_spr);
 
 		logo->setScale(.3f);
-		logo->setPosition({ 402.f, 225.f });
+		logo->setPosition(CCDirector::sharedDirector()->getWinSize() / 2 + ccp(144.f, 66.f));
 		logo->setRotation(-12.f);
 		logo->setAnchorPoint({ .5f, .5f });
 		logo->setZOrder(16);
