@@ -46,39 +46,28 @@ class $modify(CBFIndUILayer, UILayer) {
 
 		/* Wish I didn't had to copy-paste the exact same setup code on both if blocks, since that makes it
 		harder to change stuff later on, but welp, that's all I can do ;-; */
+		// no lol you just need to learn about class inheritance --raydeeux
+
+		CCNode* indicator;
 		if (Mod::get()->getSettingValue<bool>("show-as-image")) {
-			auto indicator = CCSprite::create("cbf.png"_spr);
-
+			indicator = CCSprite::create("cbf.png"_spr);
 			indicator->setScale(.2f);
-			positionIndicator(indicator);
-			indicator->setOpacity(50);
-
-			indicator->setID("cbf_indicator"_spr);
-
-			indicator->setVisible(isCBFOn);
-
-			this->addChild(indicator);
-			this->addEventListener<ToggleCBFEventFilter>([indicator](bool on) {
-				indicator->setVisible(on);
-				return ListenerResult::Stop;
-			});
 		} else {
-			auto indicator = CCLabelBMFont::create("CBF", "bigFont.fnt");
-
+			indicator = CCLabelBMFont::create("CBF", "bigFont.fnt");
 			indicator->setScale(.3f);
-			positionIndicator(indicator);
-			indicator->setOpacity(50);
-
-			indicator->setID("cbf_indicator"_spr);
-
-			indicator->setVisible(isCBFOn);
-
-			this->addChild(indicator);
-			this->addEventListener<ToggleCBFEventFilter>([indicator](bool on) {
-				indicator->setVisible(on);
-				return ListenerResult::Stop;
-			});
 		}
+
+		positionIndicator(indicator);
+		indicator->setOpacity(50);
+		indicator->setVisible(isCBFOn);
+
+		indicator->setID("cbf_indicator"_spr);
+
+		this->addChild(indicator);
+		this->addEventListener<ToggleCBFEventFilter>([indicator](bool on) {
+			indicator->setVisible(on);
+			return ListenerResult::Stop;
+		});
 
 		return true;
 	}
