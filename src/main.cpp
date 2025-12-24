@@ -1,11 +1,40 @@
 #include <Geode/Geode.hpp>
 #include <Geode/Loader.hpp>
+#include <Geode/loader/Event.hpp>
 #include <Geode/loader/Mod.hpp>
 
 #include <Geode/modify/UILayer.hpp>
 #include <Geode/modify/EndLevelLayer.hpp>
 
 using namespace geode::prelude;
+
+/// Wrapper event around `listenForSettingChanges`
+class ToggleCBFEvent : public Event {
+protected:
+	bool m_settingVal;
+public:
+	ToggleCBFEvent(bool settingVal) : m_settingVal(settingVal) {}
+	bool getSettingVal() const { return m_settingVal; }
+};
+
+class ToggleCBFEventFilter : public EventFilter<ToggleCBFEvent> {
+public:
+	using Callback = ListenerResult(bool);
+
+	ListenerResult handle(std::function<Callback> callback, ToggleCBFEvent* ev) {
+		auto on = !ev->getSettingVal();
+		return callback(on);
+	}
+	ToggleCBFEventFilter(CCNode* invoker) {} // I need to pass "invoker" as a constructor parameter so "this->addEventListener" works
+};
+
+$execute {
+	auto cbf = Loader::get()->getLoadedMod("syzzi.click_between_frames");
+	if (!cbf) return;
+	listenForSettingChanges<bool>("soft-toggle", [](bool val) {
+		ToggleCBFEvent(val).post();
+	}, cbf);
+}
 
 class $modify(CBFIndUILayer, UILayer) {
 	bool init(GJBaseGameLayer* layer) {
@@ -28,9 +57,10 @@ class $modify(CBFIndUILayer, UILayer) {
 		bool isCBFOn = cbf && !cbf->getSettingValue<bool>("soft-toggle");
 		indicator->setVisible(isCBFOn);
 
-		listenForSettingChanges<bool>("soft-toggle", [indicator](bool val) {
-			indicator->setVisible(!val);
-		}, cbf);
+		this->addEventListener<ToggleCBFEventFilter>([indicator](bool on) {
+			indicator->setVisible(on);
+			return ListenerResult::Stop;
+		});
 
 		return true;
 	}
