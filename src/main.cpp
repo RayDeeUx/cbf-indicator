@@ -1,3 +1,5 @@
+#include "Geode/cocos/robtop/xml/DS_Dictionary.h"
+#include "Geode/platform/ItaniumCast.hpp"
 #include <Geode/Geode.hpp>
 #include <Geode/Loader.hpp>
 
@@ -53,22 +55,17 @@ class $modify(CBFIndEndLevelLayer, EndLevelLayer) {
 		logo->setID("cbf_logo"_spr);
 
 		// Edit the level complete label to say a custom message
-		for (auto c : { "coin-1-background", "coin-2-background", "coin-3-background" }) {
-			if (m_mainLayer->getChildByID(c)) return; // If there is no label, don't edit it.
-		}
-
 		std::string str = "CBF Detected Loser!";
 
-		// tysm QOL for giving me a "base idea" as to what to do lol
-		// https://github.com/TheSillyDoggo/GeodeMenu/blob/2d56276e907e61c2c85c1b6e3c5e87c96b92f39e/src/SafeMode/Hooks.cpp#L100-L109
-		// (to the creator of QOL, I can change this if you want, but I need to find another method to do this)
-		// (also I manually copied the code by hand, I almost never copy-paste)
-		if (auto textArea = m_mainLayer->getChildByType<TextArea>(-1)) {
-			textArea->setString(str);
-			textArea->setScale(.6f);
-		} else if (auto textLabel = m_mainLayer->getChildByType<CCLabelBMFont>(-1)) {
-			textLabel->setString(str.c_str());
-			textLabel->setScale(.6f);
+		auto completeMsg = m_mainLayer->getChildByID("complete-message");
+		if (!completeMsg) return;
+
+		if (auto completeMsgArea = typeinfo_cast<TextArea*>(completeMsg)) {
+			completeMsgArea->setString(str);
+			completeMsgArea->setScale(.7f);
+		} else if (auto completeMsgLabel = typeinfo_cast<CCLabelBMFont*>(completeMsg)) {
+			completeMsgLabel->setString(str.c_str());
+			completeMsgLabel->setScale(.7f);
 		}
 
 		m_mainLayer->addChild(logo);
