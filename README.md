@@ -1,4 +1,6 @@
-# <span style="display: flex; flex-direction: row; align-items: center;"><img src="logo.png" width="70" height="auto" alt="the mod's logo" style="margin-right: 10px" /> CBF Indicator</span>
+<img src="logo.png" width="70" height="auto" alt="the mod's logo" />
+
+# CBF Indicator
 A simple mod that makes it very obvious when someone is using CBF
 
 <div align="center">
