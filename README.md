@@ -1,23 +1,29 @@
-# CBFIndicator
-This is where she makes a mod.
+<div style="display: flex; flex-direction: row; align-items: center;">
 
-<img src="logo.png" width="150" alt="the mod's logo" />
+<img src="logo.png" width="70" height="auto" alt="the mod's logo" />
 
-*Update logo.png to change your mod's icon (please)*
+<h1 style="margin-left: 11px;">CBF Indicator</h1>
 
-## Getting started
-We recommend heading over to [the getting started section on our docs](https://docs.geode-sdk.org/getting-started/) for useful info on what to do next.
+</div>
+A simple mod that makes it very obvious when someone is using CBF
 
-## Build instructions
-For more info, see [our docs](https://docs.geode-sdk.org/getting-started/create-mod#build)
-```sh
-# Assuming you have the Geode CLI set up already
-geode build
-```
+<div align="center">
 
-# Resources
-* [Geode SDK Documentation](https://docs.geode-sdk.org/)
-* [Geode SDK Source Code](https://github.com/geode-sdk/geode/)
-* [Geode CLI](https://github.com/geode-sdk/cli)
-* [Bindings](https://github.com/geode-sdk/bindings/)
-* [Dev Tools](https://github.com/geode-sdk/DevTools)
+## With the mod
+<img src="images/ind.png" width="700" height="auto">
+<img src="images/ind-end.png" width="700" height="auto">
+
+
+## Without the mod
+<img src="images/no-ind.png" width="700" height="auto">
+<img src="images/no-ind-end.png" width="700" height="auto">
+
+</div>
+
+## Why?
+While the CBF mod *does* leave a watermark when someone beats a level using CBF, it only appears on the endscreen, and it's quite easy to miss for most people.
+
+The main advantage of this mod is that not only does it make it more clear on the endscreen (like how can you miss *that*), but it also has a live CBF indicator while playing the level.
+
+## License
+**This mod** and the **Click Between Frames** mod by [syzzi](https://github.com/theyareonit) are licensed under the **MIT License**. More information about it can be found [here](https://choosealicense.com/licenses/mit/)
