@@ -1,0 +1,18 @@
+{
+	"geode": "4.10.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "xblazegmd.cbf-indicator",
+	"name": "CBF Indicator",
+	"version": "v1.0.0",
+	"developer": "XblazeGMD",
+	"description": "Make it very clear when someone's using CBF",
+	"dependencies": {
+		"geode.node-ids": ">=v1.20.0",
+		"syzzi.click_between_frames": ">=1.4.6"
+	}
+}
