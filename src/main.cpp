@@ -51,14 +51,16 @@ class $modify(CBFIndUILayer, UILayer) {
 		CCNode* indicator;
 		if (Mod::get()->getSettingValue<bool>("show-as-image")) {
 			indicator = CCSprite::create("cbf.png"_spr);
+			static_cast<CCSprite*>(indicator)->setOpacity(50);
 			indicator->setScale(.2f);
+			
 		} else {
 			indicator = CCLabelBMFont::create("CBF", "bigFont.fnt");
+			static_cast<CCLabelBMFont*>(indicator)->setOpacity(50);
 			indicator->setScale(.3f);
 		}
 
 		positionIndicator(indicator);
-		indicator->setOpacity(50);
 		indicator->setVisible(isCBFOn);
 
 		indicator->setID("cbf_indicator"_spr);
